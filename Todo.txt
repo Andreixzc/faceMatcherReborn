@@ -1,0 +1,4 @@
+>criar os models
+    >tipar os retornos
+>criar os services
+    

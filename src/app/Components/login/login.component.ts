@@ -6,11 +6,12 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatButtonModule} from '@angular/material/button';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [MatSelectModule, MatInputModule, MatFormFieldModule,MatButtonModule, MatDividerModule, MatIconModule,ReactiveFormsModule],
+  imports: [MatSelectModule, MatInputModule, MatFormFieldModule,MatButtonModule, MatDividerModule, MatIconModule,ReactiveFormsModule,RouterLink],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
