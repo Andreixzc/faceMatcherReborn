@@ -1,0 +1,5 @@
+@for (content of folderContent; track $index) {
+<img src="{{content.URL}}" alt="">
+}
+<!-- botão de find matches e bota o de upar files: -->
+<app-upload [folderIdReceiver]="folderId"></app-upload>
