@@ -1,8 +1,8 @@
-interface folderListResponse {
-    name: string;
-    id: string;
-    userId: string;
+export interface FolderListResponse {
+    createdAt: string;
     folderPath: string;
     folderPklPath: string;
-    createdAt: Date;
-}
+    id: string;
+    name : string;
+    userId : string;
+  }

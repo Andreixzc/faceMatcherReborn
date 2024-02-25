@@ -1,14 +1,31 @@
-import { Component } from '@angular/core';
-import { FolderRenderComponent } from '../../Components/folder-render/folder-render.component';
+import { Component, OnInit } from '@angular/core';
+import { FolderListResponse } from '../../Response/Folder/folderListResponse';
+import { Router } from '@angular/router';
+
+
+
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [FolderRenderComponent],
+  imports: [],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit {
+  constructor(private router: Router){};
+  ngOnInit(): void {
+    this.initializeFolders();
+  }
 
-  foldersDashboard: any[]=[];
+  userFolders : FolderListResponse[] = [];
+
+  folderIdSender: string = '';
+  initializeFolders() {}
+  
+  openFolder(folderId: string) {
+    this.folderIdSender = folderId; // Atualizando o folderIdSender
+    console.log(this.folderIdSender);
+    this.router.navigate(['/folder-content-page/:folderId'], { state: { folderId: this.folderIdSender } });
+  }
 }

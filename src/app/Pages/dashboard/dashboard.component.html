@@ -1,3 +1,10 @@
-<div>
-    <app-folder-render [folders]="foldersDashboard"></app-folder-render>
-</div>
+@for (folder of userFolders; track $index) {
+    <div class="col-md-3" (click)="openFolder(folder.id)">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{ folder.name }}</h5>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+    </div>
+}

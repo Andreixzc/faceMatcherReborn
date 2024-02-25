@@ -1,4 +1,4 @@
-interface FileContentResponse {
+export interface folderContentResponse {
     folderContentId: string;
     filePath: string;
     URL: string;
