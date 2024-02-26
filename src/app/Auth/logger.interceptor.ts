@@ -3,17 +3,18 @@ import { Route, Router } from '@angular/router';
 import { EMPTY } from 'rxjs';
 
 
-export const testInterceptor: HttpInterceptorFn = (req, next) => {
-  //clone the req and set manualy the token:
-  const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJGYWNlUmVjIiwic3ViIjoiYmJlMGJhNTAtYTNlOC00ZjUzLWIxMGYtMjA0NTkzNDdjMGY1IiwiZXhwIjoxNzA3OTc1MDk1fQ.Ww5sJl044i5l-lVlQW06XN2ytTFHVpK4lDX5iTvX1vw';
-  const authReq = req.clone({
-    setHeaders: {
-      Authorization: `Bearer ${token}`
-    }
-  });
+// export const testInterceptor: HttpInterceptorFn = (req, next) => {
+//   //clone the req and set manualy the token:
+//   const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJGYWNlUmVjIiwic3ViIjoiYmJlMGJhNTAtYTNlOC00ZjUzLWIxMGYtMjA0NTkzNDdjMGY1IiwiZXhwIjoxNzA3OTc1MDk1fQ.Ww5sJl044i5l-lVlQW06XN2ytTFHVpK4lDX5iTvX1vw';
+//   const authReq = req.clone({
+//     setHeaders: {
+//       Authorization: `Bearer ${token}`
+//     }
+//   });
+//   console.log
 
-  return next(authReq);
-}
+//   return next(authReq);
+// }
 
 // export const loggerInterceptor: HttpInterceptorFn = (req, next) => {
 //   if (req.headers.get('skipAuthCheck') === 'true') {

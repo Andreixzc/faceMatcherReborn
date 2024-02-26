@@ -1,8 +1,15 @@
 <form class="example-form">
     <mat-form-field class="example-full-width">
-        <mat-label>Favorite food</mat-label>
+        <mat-label>find Matches</mat-label>
         <input matInput multiple="true" type="file" [(ngModel)]="selectedFiles" (change)="onFileSelected($event)">
     </mat-form-field>
-
     <button mat-raised-button color="primary" (click)="findMatchesTemplate()">Find matches</button>
+</form>
+
+<form class="example-form">
+    <mat-form-field class="example-full-width">
+        <mat-label>Upload files</mat-label>
+        <input matInput multiple="true" type="file" [(ngModel)]="selectedFiles" (change)="onFileSelected($event)">
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="uploadFilesTemplate()">Find matches</button>
 </form>

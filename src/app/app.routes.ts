@@ -2,7 +2,8 @@ import { Routes } from '@angular/router';
 import { LoginComponent } from './Components/login/login.component';
 import { RegisterComponent } from './Components/register/register.component';
 import { DashboardComponent } from './Pages/dashboard/dashboard.component';
-import { FolderContentComponent } from './Components/folder-content/folder-content.component';
+import { FolderContentPageComponent } from './Pages/folder-content-page/folder-content-page.component';
+
 
 
 export const routes: Routes = [
@@ -20,6 +21,6 @@ export const routes: Routes = [
   },
   {
     path: 'content/:folderId',
-    component: FolderContentComponent
+    component: FolderContentPageComponent
   }
 ];

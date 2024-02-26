@@ -17,16 +17,16 @@ export class UploadComponent {
   @Input() folderIdReceiver: string = '';
 
   onFileSelected(event: any) {
-    this.selectedFiles = event.target.files; // Captura os arquivos selecionados
+    this.selectedFiles = event.target.files;
+    
+    // Captura os arquivos selecionados
   }
 
-  //both forms are equal
+  //both methods use the same file array.
   findMatchesTemplate() {
-    if (this.selectedFiles.length > 0) {
-      // Processar os arquivos selecionados
-      console.log('Arquivos selecionados:', this.selectedFiles);
-    } else {
-      console.log('Nenhum arquivo selecionado.');
-    }
+  
+  }
+  uploadFilesTemplate(){
+
   }
 }

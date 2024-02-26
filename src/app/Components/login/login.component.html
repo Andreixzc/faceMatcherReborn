@@ -2,8 +2,8 @@
 <div [formGroup]="loginForm">
   <mat-form-field>
     <mat-label>login</mat-label>
-    <input matInput formControlName="login">
-    @if("loginForm.controls['login'].errors?.required && loginForm.controls['login'].touched") {
+    <input matInput formControlName="email">
+    @if("loginForm.controls['login'].errors?.required && loginForm.controls['email'].touched") {
       <mat-error>
         Login must be filled!
       </mat-error>
