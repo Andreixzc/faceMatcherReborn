@@ -43,7 +43,6 @@ export class LoginComponent implements OnInit {
         next: response => {
           
           console.log('Login successful:', response);
-          //redirecionar para homepage e armazenar a response no local storage.
           localStorage.setItem('jwt', response.token);
           this.router.navigate(['/dashboard']);
         },
