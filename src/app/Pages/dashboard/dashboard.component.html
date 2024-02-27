@@ -1,5 +1,5 @@
 @for (folder of userFolders; track $index) {
-    <div class="col-md-3" (click)="openFolder(folder.id)">
+    <div class="col-md-3" (click)="openFolder(folder.id,folder.name)">
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">{{ folder.name }}</h5>

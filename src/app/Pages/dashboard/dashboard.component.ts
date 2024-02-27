@@ -43,10 +43,9 @@ export class DashboardComponent implements OnInit {
     }
   }
   
-  openFolder(folderId: string) {
+  openFolder(folderId: string, folderName : string) {
     
-    this.router.navigate(['/folder-content-page', folderId]);
-    // this.router.navigate(['/folder-content-page/:folderId'], { state: { folderId: this.folderIdSender } });
+    this.router.navigate(['/folder-content-page', folderId, folderName]);
   }
 
   createFolderTemplate(){

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, input } from '@angular/core';
 
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -14,15 +14,14 @@ import { Route, Router } from '@angular/router';
 })
 export class UploadComponent implements OnInit {
   ngOnInit(): void {
-   
+   console.log("Printando id da pasta:" +this.folderIdReceiver)
+   console.log("printando name: "+this.folderNameReceiver)
   }
   constructor(private FolderService : FolderService , private router: Router) {}
   selectedFiles: File[] = []; // Variável para armazenar os arquivos selecionados
   sucessUpload: boolean = false; // Variável para armazenar o sucesso do upload
-
-  // Id da pasta para procurar matches
-  //tem que passar foldername
-  @Input() folderIdReceiver: string = '';
+  @Input() folderIdReceiver:  string = '';
+  @Input() folderNameReceiver: string = '';
 
 
 
@@ -43,7 +42,7 @@ export class UploadComponent implements OnInit {
   uploadFilesTemplate(){
     if (this.selectedFiles.length > 0) {
       const formData = new FormData();
-    formData.append('folderName', this.folderIdReceiver);
+    formData.append('folderName', this.folderNameReceiver);
     
     for (let i = 0; i < this.selectedFiles.length; i++) {
       formData.append("file", this.selectedFiles[i]);

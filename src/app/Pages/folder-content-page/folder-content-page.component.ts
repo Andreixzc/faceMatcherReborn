@@ -17,11 +17,14 @@ export class FolderContentPageComponent implements OnInit {
   //checar erro de passar o folderId pela rota.
   folderId: string = '';
 
+  folderName: string = '';
+
   folderContent: folderContentResponse[] = [];
   
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.folderId = params['folderId'];
+      this.folderName = params['folderName'];
       this.initializeFolderContentTemplate();
   });
 
