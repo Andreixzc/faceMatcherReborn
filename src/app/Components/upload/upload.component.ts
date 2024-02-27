@@ -8,10 +8,11 @@ import { Route, Router } from '@angular/router';
 import { FolderListResponse } from '../../Response/Folder/folderListResponse';
 import { folderContentResponse } from '../../Response/Folder/folderContentResponse';
 import { error } from 'console';
+import { MatchesComponent } from '../matches/matches.component';
 @Component({
   selector: 'app-upload',
   standalone: true,
-  imports: [FormsModule, MatFormFieldModule, MatInputModule],
+  imports: [FormsModule, MatFormFieldModule, MatInputModule,MatchesComponent],
   templateUrl: './upload.component.html',
   styleUrl: './upload.component.css'
 })
@@ -27,11 +28,10 @@ export class UploadComponent implements OnInit {
   selectedFiles: File[] = []; // Variável para armazenar os arquivos selecionados
   sucessUpload: boolean = false; // Variável para armazenar o sucesso do upload
   matchesArray: folderContentResponse[] = []; // Variável para armazenar os arquivos que deram match
+  matchesFound: boolean = false; // Variável para armazenar se houve match
   @Input() folderIdReceiver: string = '';
   @Input() folderNameReceiver: string = '';
   currentFolder: FolderListResponse = { createdAt: '', folderPath: '', folderPklPath: '', id: '', name: '', userId: '' };
-
-
 
   onFileSelected(event: any) {
     const files: FileList = event.target.files;
@@ -43,7 +43,6 @@ export class UploadComponent implements OnInit {
     }
   }
 
-  //both methods use the same file array.
   findMatchesTemplate() {
     if (this.selectedFiles.length > 0) {
       const formData = new FormData();
@@ -55,10 +54,13 @@ export class UploadComponent implements OnInit {
       this.FolderService.findMatches(formData).subscribe({
         next: (response) => {
           this.matchesArray = response
-          console.log(response)
+          console.log(response);
+          if (this.matchesArray.length > 0) {
+            this.matchesFound = true;
+          }
+          
         },
         error: (response) => console.log("Erro")
-        // complete: () => console.info('complete') 
       })
 
     }

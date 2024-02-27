@@ -3,4 +3,8 @@
 
 <input type="file" (change)="onFileSelected($event)">
 <button (click)="findMatchesTemplate()">Upload</button>
+@if (this.matchesFound) {
+    <app-matches [matchesArrayReciever]="matchesArray"></app-matches>
+}
+
 
