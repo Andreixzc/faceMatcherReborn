@@ -36,7 +36,7 @@ export class DashboardComponent implements OnInit {
       }
       this.folderService.initializeFolders(jwt).subscribe(response => {
         this.userFolders = response; // Store the response data in 'folders' variable
-        console.log(response)
+        // console.log(response)
       });
     } else {
       console.log('localStorage is not available.');
@@ -44,8 +44,8 @@ export class DashboardComponent implements OnInit {
   }
   
   openFolder(folderId: string) {
-    this.folderIdSender = folderId; // Atualizando o folderIdSender
-    console.log(this.folderIdSender);
+    
+    this.router.navigate(['/folder-content-page', folderId]);
     // this.router.navigate(['/folder-content-page/:folderId'], { state: { folderId: this.folderIdSender } });
   }
 
@@ -53,7 +53,6 @@ export class DashboardComponent implements OnInit {
     if (this.folderNameToCreate.length > 0) { 
       const folderRequest: folderRequest = {folderName : this.folderNameToCreate};
       this.folderService.createFolders(folderRequest).subscribe(response => {
-        console.log(response);
         this.initializeFoldersTemplate();
       });
     }

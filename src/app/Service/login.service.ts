@@ -15,7 +15,6 @@ export class LoginService {
 
   
   loginUser(formGroup: FormGroup) {
-    console.log(formGroup.value);
     const options = { headers: new HttpHeaders({ 'skipAuthCheck': 'true' }) };
     return this.Http.post<loginResponse>(this.loginUrl, formGroup.value, options);
   }

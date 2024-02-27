@@ -13,19 +13,25 @@ export class FolderService {
 
   folderListUrl: string = "http://localhost:9090/folder/list";
   folderCreationUrl: string = "http://localhost:9090/folder";
+  folderContentUrl: string = "http://localhost:9090/folder-content/list/{folderId}";
+  folderContentUploadUrl: string = "http://localhost:9090/s3/upload";
 
   initializeFolders(jwt: string) {
-    const token = `Bearer ${jwt}`;
-    const headers = new HttpHeaders().set("Authorization", token);
-    return this.Http.get<FolderListResponse[]>(this.folderListUrl, { headers });
+    return this.Http.get<FolderListResponse[]>(this.folderListUrl);
 
+  }
+  initializeFolderContent(folderId: string) {
+    return this.Http.get<folderContentResponse[]>(this.folderContentUrl.replace("{folderId}", folderId));
   }
 
   createFolders(folderRequest : folderRequest){
-    // let jwt = localStorage.getItem('jwt') || '';
-    // const token = `Bearer ${jwt}`;
-    // const headers = new HttpHeaders().set("Authorization", token);
     return this.Http.post<FolderListResponse>(this.folderCreationUrl, folderRequest);
   }
 
+  uploadFiles(formData: FormData){
+    console.log(formData.get('folderName'));
+    return this.Http.post<folderContentResponse>(this.folderContentUploadUrl, formData);
+
+  }
+  
 }

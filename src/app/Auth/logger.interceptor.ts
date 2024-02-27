@@ -7,21 +7,21 @@ export const loggerInterceptor: HttpInterceptorFn = (req, next) => {
     return next(req);
   }
 
-  const token: string | null = localStorage.getItem('jwt');
+  let token: string | null = null;
+  if (typeof localStorage !== 'undefined') {
+    token = localStorage.getItem('jwt');
+  }
+
+  
   const router: Router = new Router();
 
   if (token !== null && validateExpiration(token)) {
-    console.log("TOKEN: " + token);
-
     // Clona a requisição e define o cabeçalho de autorização no clone
     const authReq = req.clone({
       setHeaders: {
         Authorization: `Bearer ${token}`
       }
     });
-
-    console.log("Authorization Header: " + authReq.headers.get('Authorization'));
-
    
     // Continua com o próximo manipulador usando o clone da requisição modificada
     return next(authReq);
