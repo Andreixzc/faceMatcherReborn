@@ -7,6 +7,9 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatButtonModule} from '@angular/material/button';
 import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, ValidatorFn, Validators } from '@angular/forms';
 import { LoginService } from '../../Service/login.service';
+import { response } from 'express';
+import { routes } from '../../app.routes';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -17,7 +20,7 @@ import { LoginService } from '../../Service/login.service';
 })
 export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
-  constructor(private fb: FormBuilder, private loginService : LoginService) { }
+  constructor(private fb: FormBuilder, private loginService : LoginService,private router: Router) { }
   ngOnInit(): void {
     this.registerForm = this.fb.group({
       name: ['', Validators.required],
@@ -32,8 +35,9 @@ export class RegisterComponent implements OnInit {
   registerTemplate(){
     if (this.registerForm.valid) {
       console.log('Form Value:', this.registerForm.value);
-      this.loginService.register(this.registerForm);
+      this.loginService.register(this.registerForm).subscribe(response => {console.log(response)});
       this.registerForm.reset();
+      this.router.navigate(['/login']);
     } else {
       console.log('Formulário inválido. Corrija os campos destacados.');
     }
