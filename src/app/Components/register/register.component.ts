@@ -6,6 +6,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatButtonModule} from '@angular/material/button';
 import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, ValidatorFn, Validators } from '@angular/forms';
+import { LoginService } from '../../Service/login.service';
 
 @Component({
   selector: 'app-register',
@@ -16,7 +17,7 @@ import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validator
 })
 export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private loginService : LoginService) { }
   ngOnInit(): void {
     this.registerForm = this.fb.group({
       name: ['', Validators.required],
@@ -31,6 +32,7 @@ export class RegisterComponent implements OnInit {
   registerTemplate(){
     if (this.registerForm.valid) {
       console.log('Form Value:', this.registerForm.value);
+      this.loginService.register(this.registerForm);
       this.registerForm.reset();
     } else {
       console.log('Formulário inválido. Corrija os campos destacados.');

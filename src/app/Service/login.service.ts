@@ -11,11 +11,18 @@ export class LoginService {
   constructor(private Http: HttpClient) { }
 
   loginUrl = "http://localhost:9090/user/login";
+  registerUrl = "http://localhost:9090/user";
 
 
   
   loginUser(formGroup: FormGroup) {
     const options = { headers: new HttpHeaders({ 'skipAuthCheck': 'true' }) };
     return this.Http.post<loginResponse>(this.loginUrl, formGroup.value, options);
+  }
+  register(formGroup: FormGroup){
+    const options = { headers: new HttpHeaders({ 'skipAuthCheck': 'true' }) };
+    formGroup.removeControl('confirmPassword');
+    console.log(formGroup.value)
+    return this.Http.post(this.registerUrl,formGroup.value,options);
   }
 }
