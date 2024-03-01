@@ -1,14 +1,16 @@
-<h5>Arquivos:
 
-</h5>
-<div class="card">
-    <div class="row">
-        @for (content of folderContent; track $index) {
-        <div class="column col-md-3">
-            <img class="fixed-size-image" src="{{ content.URL }}" alt="">
+<div class="row">
+    @for (content of folderContent; track $index) {
+        <div class="col-md-4">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="{{content.URL}}" alt="Card image cap">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">{{content.fileName}}</li>
+                    <li class="list-group-item" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">{{content.createdAt}}</li>
+                  </ul>
+            </div>
         </div>
-        }
-    </div>
+    }
 </div>
 
 

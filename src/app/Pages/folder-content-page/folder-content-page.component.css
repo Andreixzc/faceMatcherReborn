@@ -1,18 +1,22 @@
 .row {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    margin: -10px; /* Ajuste o espaçamento negativo para compensar */
 }
 
-.column {
+.col-md-4 {
     flex: 0 0 auto;
-    width: 100%;
-    max-width: 25%; /* Adjust this value to change the number of columns per row */
-    margin-bottom: 20px; /* Optional margin between rows */
+    width: calc(33.333333% - 20px); /* Ajuste o tamanho da coluna com o espaçamento */
+    padding: 10px; /* Espaçamento interno para cada coluna */
 }
 
-.fixed-size-image {
-    width: 100%; /* Ensures images fill their parent container */
-    height: 200px; /* Set the desired height for all images */
-    object-fit: cover; /* Ensures images maintain their aspect ratio and cover the container */
+.card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.card-img-top {
+    width: 100%;
+    height: auto;
 }

@@ -1,10 +1,16 @@
-<h5>Matches found:</h5>
-<div class="card">
-    <div class="row">
-        @for (matches of matchesArrayReciever; track $index) {
-        <div class="column col-md-3">
-            <img class="fixed-size-image" src="{{ matches.URL }}" alt="">
+<div class="text-center">
+    <h5 style="font-size: larger; font-style: italic;">Matches Found</h5>
+  </div>
+<div class="row">
+    @for (matches of matchesArrayReciever; track $index) {
+        <div class="col-md-4">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="{{matches.URL}}" alt="Card image cap">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">{{matches.fileName}}</li>
+                    <li class="list-group-item" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">{{matches.createdAt}}</li>
+                  </ul>
+            </div>
         </div>
-        }
-    </div>
+    }
 </div>
