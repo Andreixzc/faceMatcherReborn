@@ -1,0 +1,5 @@
+.fixed-size-image {
+    width: 30px; /* Set the width */
+    height: 30px; /* Set the height */
+    object-fit: cover; /* Maintain aspect ratio */
+}

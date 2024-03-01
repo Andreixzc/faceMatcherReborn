@@ -1,15 +1,45 @@
-@for (folder of userFolders; track $index) {
-    <div class="col-md-3" (click)="openFolder(folder.id,folder.name)">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">{{ folder.name }}</h5>
-                <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+<h2 class="font-size-24 me-3 mb-0">Folders</h2>
+<div class="row mt-4">
+    @for (folder of userFolders; track $index) {
+      <div class="cursor col-xl-2 col-sm-4 ">
+        <div class="card shadow-none border">
+          <div class="card-body p-3">
+            <div class="">
+              <div class="d-flex justify-content-between align-items-center">
+                <div>
+                  <i class="bx bxs-folder h1 mb-0 text-warning"></i>
+                </div>
+              </div>
+              <div class=" d-flex mt-3">
+                <div  >
+                  <h5 class="font-size-15 text-truncate mb-1">
+                    <a class="text-body" style="font-family: Arial, sans-serif;">{{folder.name}}</a>
+                </h5>
+                
+                      <button type="button" (click)="openFolder(folder.id,folder.name)" class="btn btn-primary">Acessar pasta</button>
+                      <div><p></p></div> 
+                      <div class="dropdown">
+            
+                        <div id="dropdownMenuButton" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <a  class="dropdown-item">{{folder.name}}</a>
+                          <a class="dropdown-item" href="#">Add files</a>
+                        </div>  
+                      </div>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
-    </div>
-}
-  <div>
-    <input type="text" [(ngModel)]="folderNameToCreate" placeholder="Folder Name">
-    <button (click)="createFolderTemplate()">Create Folder</button>
+      </div>
+    }
   </div>
+
+  <div style="margin-bottom: 20px;">
+    <input type="text" [(ngModel)]="folderNameToCreate" placeholder="Folder Name" style="padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+    <button (click)="createFolderTemplate()" style="padding: 8px 16px; background-color: #007bff; color: #fff; border: none; border-radius: 4px; cursor: pointer;">Create Folder</button>
+</div>
+
   

@@ -1,4 +1,9 @@
-<h1>Matches:</h1>
-@for (matches of matchesArrayReciever; track $index) {
-    <img src="{{matches.URL}}" alt="">
-}
+<div class="row">
+    <div class="column">
+        @for (matches of matchesArrayReciever; track $index) {
+            <div class="col-md-3">
+                <img class="fixed-size-image" src="{{ matches.URL }}" alt="">
+            </div>
+        }
+    </div>
+</div>
