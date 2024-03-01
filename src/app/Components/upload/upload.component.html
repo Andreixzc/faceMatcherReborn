@@ -1,14 +1,26 @@
 <div class="file-upload-container">
     <input type="file" multiple="true" (change)="onFileSelected($event)">
     <button type="button" class="btn btn-primary upload-button" (click)="uploadFilesTemplate()">Upload Files</button>
+    <!-- @if (loadUploadFlag) {
+        <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+    } -->
 </div>
 
 <div class="file-upload-container">
+    @if (matchesLoadingFlag) {
+        <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+    }
     <input type="file" (change)="onFileSelected($event)">
     <button type="button" class="btn btn-primary find-matches-button" (click)="findMatchesTemplate()">Find Matches</button>
 </div>
 @if (this.matchesFound) {
     <app-matches [matchesArrayReciever]="matchesArray"></app-matches>
-}
+} 
+
+
 
 

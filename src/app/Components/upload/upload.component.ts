@@ -11,7 +11,7 @@ import { MatchesComponent } from '../matches/matches.component';
 @Component({
   selector: 'app-upload',
   standalone: true,
-  imports: [FormsModule, MatFormFieldModule, MatInputModule,MatchesComponent],
+  imports: [FormsModule, MatFormFieldModule, MatInputModule, MatchesComponent],
   templateUrl: './upload.component.html',
   styleUrl: './upload.component.css'
 })
@@ -20,14 +20,15 @@ export class UploadComponent implements OnInit {
     this.FolderService.getFolderById(this.folderIdReceiver).subscribe(response => {
       this.currentFolder = response;
     });
-    console.log("Printando id da pasta:" + this.folderIdReceiver)
-    console.log("printando name: " + this.folderNameReceiver)
   }
   constructor(private FolderService: FolderService, private router: Router) { }
   selectedFiles: File[] = []; // Variável para armazenar os arquivos selecionados
   sucessUpload: boolean = false; // Variável para armazenar o sucesso do upload
   matchesArray: folderContentResponse[] = []; // Variável para armazenar os arquivos que deram match
   matchesFound: boolean = false; // Variável para armazenar se houve match
+  loadUploadFlag: boolean = false;
+  matchesLoadingFlag: boolean = false;
+
   @Input() folderIdReceiver: string = '';
   @Input() folderNameReceiver: string = '';
   currentFolder: FolderListResponse = { createdAt: '', folderPath: '', folderPklPath: '', id: '', name: '', userId: '' };
@@ -43,6 +44,7 @@ export class UploadComponent implements OnInit {
   }
 
   findMatchesTemplate() {
+    
     if (this.selectedFiles.length > 0) {
       const formData = new FormData();
       formData.append('folderPath', this.currentFolder.folderPklPath);
@@ -50,23 +52,30 @@ export class UploadComponent implements OnInit {
       for (let i = 0; i < this.selectedFiles.length; i++) {
         formData.append("file", this.selectedFiles[i]);
       }
+      this.matchesLoadingFlag = true;
       this.FolderService.findMatches(formData).subscribe({
         next: (response) => {
           this.matchesArray = response
-          console.log(response);
+          this.matchesLoadingFlag = true;
           if (this.matchesArray.length > 0) {
             this.matchesFound = true;
+            
           }
-          
+
         },
-        error: (response) => console.log("Erro")
+        error: (response) => {
+          console.log("Erro");
+          this.matchesLoadingFlag = false;
+        }
       })
 
     }
+    this.matchesLoadingFlag = false;
   }
 
 
   uploadFilesTemplate() {
+    this.loadUploadFlag = true;
     if (this.selectedFiles.length > 0) {
       const formData = new FormData();
       formData.append('folderName', this.folderNameReceiver);
