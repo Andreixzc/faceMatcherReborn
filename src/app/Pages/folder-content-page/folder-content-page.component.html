@@ -1,9 +1,16 @@
 <h5>Arquivos:
 
 </h5>
+<div class="card">
+    <div class="row">
+        @for (content of folderContent; track $index) {
+        <div class="column col-md-3">
+            <img class="fixed-size-image" src="{{ content.URL }}" alt="">
+        </div>
+        }
+    </div>
+</div>
 
-@for (content of folderContent; track $index) {
-<img src="{{content.URL}}" alt="">
-}
+
 <!-- botão de find matches e bota o de upar files: -->
-<app-upload [folderNameReceiver]="folderName"  [folderIdReceiver]="folderId" ></app-upload>
+<app-upload [folderNameReceiver]="folderName" [folderIdReceiver]="folderId"></app-upload>

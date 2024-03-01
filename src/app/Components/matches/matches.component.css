@@ -1,5 +1,18 @@
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.column {
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 25%; /* Adjust this value to change the number of columns per row */
+    margin-bottom: 20px; /* Optional margin between rows */
+}
+
 .fixed-size-image {
-    width: 30px; /* Set the width */
-    height: 30px; /* Set the height */
-    object-fit: cover; /* Maintain aspect ratio */
+    width: 100%; /* Ensures images fill their parent container */
+    height: 200px; /* Set the desired height for all images */
+    object-fit: cover; /* Ensures images maintain their aspect ratio and cover the container */
 }
