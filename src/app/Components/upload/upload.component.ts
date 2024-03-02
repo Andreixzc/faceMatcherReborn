@@ -75,7 +75,7 @@ export class UploadComponent implements OnInit {
 
 
   uploadFilesTemplate() {
-    this.loadUploadFlag = true;
+    
     if (this.selectedFiles.length > 0) {
       const formData = new FormData();
       formData.append('folderName', this.folderNameReceiver);
@@ -83,7 +83,7 @@ export class UploadComponent implements OnInit {
       for (let i = 0; i < this.selectedFiles.length; i++) {
         formData.append("file", this.selectedFiles[i]);
       }
-
+      this.loadUploadFlag = true;
       this.FolderService.uploadFiles(formData).subscribe(
         (response) => {
           this.sucessUpload = true;

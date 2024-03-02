@@ -25,3 +25,33 @@ input[type="file"]:hover {
     height: 30px; /* Set the height */
     object-fit: cover; /* Maintain aspect ratio */
 }
+
+
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #uploadMessage {
+    color: white;
+    margin-left: 10px;
+  }
+  
+  #successMessage {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: green;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  

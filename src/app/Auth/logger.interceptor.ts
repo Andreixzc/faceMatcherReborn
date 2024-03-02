@@ -28,6 +28,7 @@ export const loggerInterceptor: HttpInterceptorFn = (req, next) => {
   }
 
   // Redireciona para a página de login se o token estiver ausente ou expirado
+  window.alert("session expired, please login again");
   router.navigate(['/login']);
   
   // Retorna um Observable vazio para cancelar a requisição
