@@ -18,6 +18,9 @@ import { loginResponse } from '../../Response/Login/loginResponse';
   styleUrl: './login.component.css'
 })
 export class LoginComponent implements OnInit {
+redirectToRegister() {
+  this.router.navigate(['/register']);
+}
 
   loginForm!: FormGroup;
   formSubmitted = false;
@@ -31,10 +34,6 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.loginForm = this.fb.group({
-    //   login: ['', Validators.required],
-    //   password: ['', Validators.required],
-    // });
   }
 
   loginTemplate() {

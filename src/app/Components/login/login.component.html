@@ -1,28 +1,4 @@
 
-<!-- <div [formGroup]="loginForm">
-  <mat-form-field>
-    <mat-label>email</mat-label>
-    <input matInput formControlName="email">
-    @if("loginForm.controls['login'].errors?.required && loginForm.controls['email'].touched") {
-      <mat-error>
-        Login must be filled!
-      </mat-error>
-    }
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Password</mat-label>
-    <input type="password" matInput formControlName="password">
-    @if ("loginForm.controls['password'].errors?.required && loginForm.controls['password'].touched") {
-      <mat-error >
-      Password must be filled!
-    </mat-error>
-    }
-  </mat-form-field>
-  <button (click)="loginTemplate()" mat-button>login</button>
-
- 
-</div> -->
-
 
 <section class="vh-100">
   <div class="container-fluid h-custom">
@@ -78,8 +54,8 @@
           <div class="text-center text-lg-start mt-4 pt-2">
             <button type="button" class="btn btn-primary btn-lg"
               style="padding-left: 2.5rem; padding-right: 2.5rem;" (click)="loginTemplate()">Login</button>
-            <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="#!"
-                class="link-danger">Register</a></p>
+              <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="/register" class="link-danger" (click)="redirectToRegister()">Register</a></p>
+
           </div>
 
         </form>
