@@ -27,7 +27,7 @@ export class UploadComponent implements OnInit {
   matchesArray: folderContentResponse[] = []; // Variável para armazenar os arquivos que deram match
   matchesFound: boolean = false; // Variável para armazenar se houve match
   loadUploadFlag: boolean = false;
-  matchesLoadingFlag: boolean = false;
+
 
   @Input() folderIdReceiver: string = '';
   @Input() folderNameReceiver: string = '';
@@ -52,11 +52,11 @@ export class UploadComponent implements OnInit {
       for (let i = 0; i < this.selectedFiles.length; i++) {
         formData.append("file", this.selectedFiles[i]);
       }
-      this.matchesLoadingFlag = true;
+
       this.FolderService.findMatches(formData).subscribe({
         next: (response) => {
           this.matchesArray = response
-          this.matchesLoadingFlag = true;
+    
           if (this.matchesArray.length > 0) {
             this.matchesFound = true;
             
@@ -65,12 +65,12 @@ export class UploadComponent implements OnInit {
         },
         error: (response) => {
           console.log("Erro");
-          this.matchesLoadingFlag = false;
+    
         }
       })
 
     }
-    this.matchesLoadingFlag = false;
+ 
   }
 
 
