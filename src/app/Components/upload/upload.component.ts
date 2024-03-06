@@ -27,6 +27,9 @@ export class UploadComponent implements OnInit {
   matchesArray: folderContentResponse[] = []; // Variável para armazenar os arquivos que deram match
   matchesFound: boolean = false; // Variável para armazenar se houve match
   loadUploadFlag: boolean = false;
+  loadingMatches: boolean = false;
+
+
 
 
   @Input() folderIdReceiver: string = '';
@@ -43,39 +46,65 @@ export class UploadComponent implements OnInit {
     }
   }
 
+  // findMatchesTemplate() {
+
+  //   if (this.selectedFiles.length > 0) {
+  //     const formData = new FormData();
+  //     formData.append('folderPath', this.currentFolder.folderPklPath);
+
+  //     for (let i = 0; i < this.selectedFiles.length; i++) {
+  //       formData.append("file", this.selectedFiles[i]);
+  //     }
+  //     this.FolderService.findMatches(formData).subscribe({
+  //       next: (response) => {
+          
+  //         this.matchesArray = response
+
+  //         if (this.matchesArray.length > 0) {
+  //           this.matchesFound = true;
+
+  //         }
+
+  //       },
+        
+  //       error: (response) => {
+  //         console.log("Erro");
+
+  //       }
+  //     })
+
+  //   }
+
+  // }
   findMatchesTemplate() {
-    
     if (this.selectedFiles.length > 0) {
-      const formData = new FormData();
-      formData.append('folderPath', this.currentFolder.folderPklPath);
-
-      for (let i = 0; i < this.selectedFiles.length; i++) {
-        formData.append("file", this.selectedFiles[i]);
-      }
-
-      this.FolderService.findMatches(formData).subscribe({
-        next: (response) => {
-          this.matchesArray = response
-    
-          if (this.matchesArray.length > 0) {
-            this.matchesFound = true;
-            
-          }
-
-        },
-        error: (response) => {
-          console.log("Erro");
-    
+        this.loadingMatches = true; // Show spinner
+        const formData = new FormData();
+        formData.append('folderPath', this.currentFolder.folderPklPath);
+        for (let i = 0; i < this.selectedFiles.length; i++) {
+            formData.append("file", this.selectedFiles[i]);
         }
-      })
-
+        this.FolderService.findMatches(formData).subscribe({
+            next: (response) => {
+                this.matchesArray = response;
+                if (this.matchesArray.length > 0) {
+                    this.matchesFound = true;
+                }
+            },
+            error: (response) => {
+                console.log("Error");
+            },
+            complete: () => {
+                this.loadingMatches = false; // Hide spinner
+            }
+        });
     }
- 
-  }
+}
+
 
 
   uploadFilesTemplate() {
-    
+
     if (this.selectedFiles.length > 0) {
       const formData = new FormData();
       formData.append('folderName', this.folderNameReceiver);

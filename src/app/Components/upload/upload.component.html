@@ -10,7 +10,7 @@
         <div class="spinner-border" role="status">
             <span class="sr-only">Uploading files...</span>
         </div>
-        <div id="uploadMessage">Uploading files...</div>
+        <!-- <div id="uploadMessage">Uploading files...</div> -->
     </div>
     @if (sucessUpload) {
     <div id="successMessage" style="display: none;">
@@ -25,7 +25,7 @@
     }
 </div>
 
-<div class="file-upload-container">
+<!-- <div class="file-upload-container">
     <input type="file" (change)="onFileSelected($event)">
     <button type="button" class="btn btn-primary find-matches-button" (click)="findMatchesTemplate()">Find
         Matches</button>
@@ -36,4 +36,25 @@
 <div id="errorMessage" style="display: none;">
     No matches found!
 </div>
+} -->
+
+<div class="file-upload-container">
+    <input type="file" (change)="onFileSelected($event)">
+    <button type="button" class="btn btn-primary find-matches-button" (click)="findMatchesTemplate()">Find Matches</button>
+    @if (loadingMatches) {
+        <div id="overlay">
+            <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            <!-- <div id="uploadMessage">Finding matches...</div> -->
+        </div>
+    }
+</div>
+
+@if (this.matchesFound) {
+    <app-matches [matchesArrayReciever]="matchesArray"></app-matches>
+} @else {
+    <div id="errorMessage" style="display: none;">No matches found!</div>
 }
+
+
