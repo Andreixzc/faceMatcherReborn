@@ -18,16 +18,15 @@ export class MatchesComponent {
   
   downloadMatches() {
     for (let matches of this.matchesArrayReciever) {
-      this.downloadFile(matches.URL, matches.fileName);
+      console.log(matches.URL);
+      this.downloadFiles(matches.URL, matches.fileName);
     }
   }
 
-  downloadFile(url: string, fileName: string) {
-    console.log('Baixando arquivo:', url);
-    this.http.get(url, { responseType: 'blob' }).subscribe(response => {
-      saveAs(response, fileName); // Inicia o download do arquivo
-    }, error => {
-      console.error('Erro ao baixar o arquivo:', error);
+  downloadFiles(filePath: string, fileName: string) {
+    console.log(filePath)
+    this.http.get(filePath, { responseType: 'blob' }).subscribe((res: any) => {
+      saveAs(res, fileName);
     });
   }
 }
