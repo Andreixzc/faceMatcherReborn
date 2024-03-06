@@ -18,6 +18,7 @@ export class FolderService {
   folderContentUploadUrl: string = "http://localhost:9090/s3/upload";
   folderByIdUrl: string = "http://localhost:9090/folder/{id}";
   folderFindMatchesUrl: string = "http://localhost:9090/s3/ref";
+  folderDeleteUrl: string = "http://localhost:9090/folder/{id}";
   
 
   initializeFolders(jwt: string) {
@@ -43,5 +44,9 @@ export class FolderService {
   }
   findMatches(formData: FormData) {
     return this.Http.post<folderContentResponse[]>(this.folderFindMatchesUrl, formData);
+  }
+  
+  deleteFolder(folderId: string){
+    return this.Http.delete(this.folderDeleteUrl.replace("{id}", folderId));
   }
 }

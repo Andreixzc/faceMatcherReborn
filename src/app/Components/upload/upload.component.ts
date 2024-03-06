@@ -57,7 +57,7 @@ export class UploadComponent implements OnInit {
   //     }
   //     this.FolderService.findMatches(formData).subscribe({
   //       next: (response) => {
-          
+
   //         this.matchesArray = response
 
   //         if (this.matchesArray.length > 0) {
@@ -66,7 +66,7 @@ export class UploadComponent implements OnInit {
   //         }
 
   //       },
-        
+
   //       error: (response) => {
   //         console.log("Erro");
 
@@ -78,28 +78,28 @@ export class UploadComponent implements OnInit {
   // }
   findMatchesTemplate() {
     if (this.selectedFiles.length > 0) {
-        this.loadingMatches = true; // Show spinner
-        const formData = new FormData();
-        formData.append('folderPath', this.currentFolder.folderPklPath);
-        for (let i = 0; i < this.selectedFiles.length; i++) {
-            formData.append("file", this.selectedFiles[i]);
+      this.loadingMatches = true; // Show spinner
+      const formData = new FormData();
+      formData.append('folderPath', this.currentFolder.folderPklPath);
+      for (let i = 0; i < this.selectedFiles.length; i++) {
+        formData.append("file", this.selectedFiles[i]);
+      }
+      this.FolderService.findMatches(formData).subscribe({
+        next: (response) => {
+          this.matchesArray = response;
+          if (this.matchesArray.length > 0) {
+            this.matchesFound = true;
+          }
+        },
+        error: (response) => {
+          console.log("Error");
+        },
+        complete: () => {
+          this.loadingMatches = false; // Hide spinner
         }
-        this.FolderService.findMatches(formData).subscribe({
-            next: (response) => {
-                this.matchesArray = response;
-                if (this.matchesArray.length > 0) {
-                    this.matchesFound = true;
-                }
-            },
-            error: (response) => {
-                console.log("Error");
-            },
-            complete: () => {
-                this.loadingMatches = false; // Hide spinner
-            }
-        });
+      });
     }
-}
+  }
 
 
 
@@ -124,5 +124,20 @@ export class UploadComponent implements OnInit {
         }
       );
     }
+  }
+
+  deleteFolderTemplate() {
+    this.FolderService.deleteFolder(this.folderIdReceiver).subscribe(
+      {
+        next: (response) => {
+          window.alert("Folder deleted!");
+          this.router.navigate(['/dashboard']);
+        }
+      },
+    );
+  }
+
+  generateMatchesUrlPage() {
+    //todo
   }
 }
