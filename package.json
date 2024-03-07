@@ -25,6 +25,8 @@
     "@angular/ssr": "^17.0.9",
     "@ng-bootstrap/ng-bootstrap": "^16.0.0",
     "@popperjs/core": "^2.11.8",
+    "aws-cdk-lib": "^2.131.0",
+    "aws-sdk": "^2.1572.0",
     "bootstrap": "^5.3.3",
     "express": "^4.18.2",
     "file-saver": "^2.0.5",
