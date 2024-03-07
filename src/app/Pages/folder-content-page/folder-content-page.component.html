@@ -3,7 +3,7 @@
     @for (content of folderContent; track $index) {
         <div class="col-md-4">
             <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="{{content.URL}}" alt="Card image cap">
+                <img class="card-img-top" src="{{content.URL}}" alt="Card image cap" style="width: 100%; height: 200px;">
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">{{content.fileName}}</li>
                     <li class="list-group-item" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">{{content.createdAt}}</li>
@@ -13,6 +13,8 @@
     }
 </div>
 
-
+<!-- <div class="text-center">
+    <button class="btn btn-primary" (click)="downloadS3Objects()" >Download All folder content</button>
+</div> -->
 <!-- botão de find matches e bota o de upar files: -->
-<app-upload [folderNameReceiver]="folderName" [folderIdReceiver]="folderId"></app-upload>
+<app-upload [contentArrayReciever]="folderContent" [folderNameReceiver]="folderName" [folderIdReceiver]="folderId"></app-upload>

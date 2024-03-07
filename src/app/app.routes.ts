@@ -4,10 +4,12 @@ import { RegisterComponent } from './Components/register/register.component';
 import { DashboardComponent } from './Pages/dashboard/dashboard.component';
 import { FolderContentPageComponent } from './Pages/folder-content-page/folder-content-page.component';
 import { MatchesComponent } from './Components/matches/matches.component';
+import { FaqComponent } from './Pages/faq/faq.component';
 
 
 
 export const routes: Routes = [
+  
   {
     path: 'login',
     component: LoginComponent
@@ -27,5 +29,9 @@ export const routes: Routes = [
   {
     path: 'matches',
     component: MatchesComponent
+  },
+  {
+    path : '',
+    component : FaqComponent
   }
 ];

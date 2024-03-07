@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { folderContentResponse } from '../Response/Folder/folderContentResponse';
 import { FolderListResponse } from '../Response/Folder/folderListResponse';
@@ -19,6 +19,7 @@ export class FolderService {
   folderByIdUrl: string = "http://localhost:9090/folder/{id}";
   folderFindMatchesUrl: string = "http://localhost:9090/s3/ref";
   folderDeleteUrl: string = "http://localhost:9090/folder/{id}";
+  downloadMatchesUrl : string = "http://localhost:9090/folder-content/downloadAllMatches";
   
 
   initializeFolders(jwt: string) {
@@ -48,5 +49,13 @@ export class FolderService {
   
   deleteFolder(folderId: string){
     return this.Http.delete(this.folderDeleteUrl.replace("{id}", folderId));
+  }
+  downloadAllMatches(matchesKey: string[]) {
+    const requestOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      responseType: 'arraybuffer' as 'json'  // Set responseType to 'arraybuffer'
+    };
+
+    return this.Http.post(this.downloadMatchesUrl, matchesKey, requestOptions);
   }
 }
