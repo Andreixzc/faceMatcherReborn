@@ -2,7 +2,6 @@ import { Component, Input } from '@angular/core';
 import { folderContentResponse } from '../../Response/Folder/folderContentResponse';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FolderService } from '../../Service/folder.service';
-import AWS from 'aws-sdk';
 import JSZip from 'jszip';
 
 @Component({
