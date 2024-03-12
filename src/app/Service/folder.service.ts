@@ -12,14 +12,14 @@ export class FolderService {
 
   constructor(private Http: HttpClient) { }
 
-  folderListUrl: string = "http://ec2-18-231-174-121.sa-east-1.compute.amazonaws.com:9090/folder/list";
-  folderCreationUrl: string = "http://ec2-18-231-174-121.sa-east-1.compute.amazonaws.com:9090/folder";
-  folderContentUrl: string = "http://ec2-18-231-174-121.sa-east-1.compute.amazonaws.com:9090/folder-content/list/{folderId}";
-  folderContentUploadUrl: string = "http://ec2-18-231-174-121.sa-east-1.compute.amazonaws.com:9090/s3/upload";
-  folderByIdUrl: string = "http://ec2-18-231-174-121.sa-east-1.compute.amazonaws.com:9090/folder/{id}";
-  folderFindMatchesUrl: string = "http://ec2-18-231-174-121.sa-east-1.compute.amazonaws.com:9090/s3/ref";
-  folderDeleteUrl: string = "http://ec2-18-231-174-121.sa-east-1.compute.amazonaws.com:9090/folder/{id}";
-  downloadMatchesUrl : string = "http://ec2-18-231-174-121.sa-east-1.compute.amazonaws.com:9090/folder-content/downloadAllMatches";
+  folderListUrl: string = "https://ec2-18-231-174-121.sa-east-1.compute.amazonaws.com:9090/folder/list";
+  folderCreationUrl: string = "https://ec2-18-231-174-121.sa-east-1.compute.amazonaws.com:9090/folder";
+  folderContentUrl: string = "https://ec2-18-231-174-121.sa-east-1.compute.amazonaws.com:9090/folder-content/list/{folderId}";
+  folderContentUploadUrl: string = "https://ec2-18-231-174-121.sa-east-1.compute.amazonaws.com:9090/s3/upload";
+  folderByIdUrl: string = "https://ec2-18-231-174-121.sa-east-1.compute.amazonaws.com:9090/folder/{id}";
+  folderFindMatchesUrl: string = "https://ec2-18-231-174-121.sa-east-1.compute.amazonaws.com:9090/s3/ref";
+  folderDeleteUrl: string = "https://ec2-18-231-174-121.sa-east-1.compute.amazonaws.com:9090/folder/{id}";
+  downloadMatchesUrl : string = "https://ec2-18-231-174-121.sa-east-1.compute.amazonaws.com:9090/folder-content/downloadAllMatches";
   
 
   initializeFolders(jwt: string) {
