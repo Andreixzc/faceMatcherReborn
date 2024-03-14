@@ -10,8 +10,8 @@ export class LoginService {
 
   constructor(private Http: HttpClient) { }
 
-  loginUrl = "https://ec2-18-231-174-121.sa-east-1.compute.amazonaws.com:9090/user/login";
-  registerUrl = "https://ec2-18-231-174-121.sa-east-1.compute.amazonaws.com:9090/user";
+  loginUrl = "https://api.theandrei.link/user/login";
+  registerUrl = "https://api.theandrei.link/user";
 
 
   

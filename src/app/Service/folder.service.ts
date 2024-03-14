@@ -11,15 +11,15 @@ import { get } from 'node:http';
 export class FolderService {
 
   constructor(private Http: HttpClient) { }
-
-  folderListUrl: string = "https://ec2-18-231-174-121.sa-east-1.compute.amazonaws.com:9090/folder/list";
-  folderCreationUrl: string = "https://ec2-18-231-174-121.sa-east-1.compute.amazonaws.com:9090/folder";
-  folderContentUrl: string = "https://ec2-18-231-174-121.sa-east-1.compute.amazonaws.com:9090/folder-content/list/{folderId}";
-  folderContentUploadUrl: string = "https://ec2-18-231-174-121.sa-east-1.compute.amazonaws.com:9090/s3/upload";
-  folderByIdUrl: string = "https://ec2-18-231-174-121.sa-east-1.compute.amazonaws.com:9090/folder/{id}";
-  folderFindMatchesUrl: string = "https://ec2-18-231-174-121.sa-east-1.compute.amazonaws.com:9090/s3/ref";
-  folderDeleteUrl: string = "https://ec2-18-231-174-121.sa-east-1.compute.amazonaws.com:9090/folder/{id}";
-  downloadMatchesUrl : string = "https://ec2-18-231-174-121.sa-east-1.compute.amazonaws.com:9090/folder-content/downloadAllMatches";
+ 
+  folderListUrl: string = "https://api.theandrei.link/folder/list";
+  folderCreationUrl: string = "https://api.theandrei.link/folder";
+  folderContentUrl: string = "https://api.theandrei.link/folder-content/list/{folderId}";
+  folderContentUploadUrl: string = "https://api.theandrei.link/s3/upload";
+  folderByIdUrl: string = "https://api.theandrei.link/folder/{id}";
+  folderFindMatchesUrl: string = "https://api.theandrei.link/s3/ref";
+  folderDeleteUrl: string = "https://api.theandrei.link/folder/{id}";
+  downloadMatchesUrl : string = "https://api.theandrei.link/folder-content/downloadAllMatches";
   
 
   initializeFolders(jwt: string) {
