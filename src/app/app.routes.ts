@@ -6,32 +6,29 @@ import { FolderContentPageComponent } from './Pages/folder-content-page/folder-c
 import { MatchesComponent } from './Components/matches/matches.component';
 import { FaqComponent } from './Pages/faq/faq.component';
 
-
-
 export const routes: Routes = [
-  
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
   },
   {
     path: 'register',
-    component: RegisterComponent
+    component: RegisterComponent,
   },
   {
     path: 'dashboard',
-    component: DashboardComponent
+    component: DashboardComponent,
   },
   {
     path: 'folder-content-page/:folderId/:folderName',
-    component: FolderContentPageComponent
+    component: FolderContentPageComponent,
   },
   {
     path: 'matches',
-    component: MatchesComponent
+    component: MatchesComponent,
   },
   {
-    path : '',
-    component : FaqComponent
-  }
+    path: '',
+    component: FaqComponent,
+  },
 ];

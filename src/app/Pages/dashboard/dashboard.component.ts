@@ -7,18 +7,15 @@ import { FormGroup, FormsModule } from '@angular/forms';
 import { FolderService } from '../../Service/folder.service';
 import { folderRequest } from '../../../Request/Folder/folderRquest';
 
-
-
-
 @Component({
   selector: 'app-dashboard',
   standalone: true,
   imports: [FormsModule, MatFormFieldModule, MatInputModule],
   templateUrl: './dashboard.component.html',
-  styleUrl: './dashboard.component.css'
+  styleUrl: './dashboard.component.css',
 })
 export class DashboardComponent implements OnInit {
-  constructor(private router: Router, private folderService: FolderService) { };
+  constructor(private router: Router, private folderService: FolderService) {}
   regex = /[!@#$%^&*()_+={}\[\]:;"'<>,.?/\\|`~]/;
   folderNameToCreate: string = '';
   ngOnInit(): void {
@@ -35,7 +32,7 @@ export class DashboardComponent implements OnInit {
         console.log('jwt is empty');
         return;
       }
-      this.folderService.initializeFolders(jwt).subscribe(response => {
+      this.folderService.initializeFolders(jwt).subscribe((response) => {
         this.userFolders = response; // Store the response data in 'folders' variable
         // console.log(response)
       });
@@ -45,18 +42,24 @@ export class DashboardComponent implements OnInit {
   }
 
   openFolder(folderId: string, folderName: string) {
-
     this.router.navigate(['/folder-content-page', folderId, folderName]);
   }
 
   createFolderTemplate() {
-    if (this.folderNameToCreate.length > 0 && !this.validateEspecialCharacters(this.folderNameToCreate) ){
-      const folderRequest: folderRequest = { folderName: this.folderNameToCreate };
-      this.folderService.createFolders(folderRequest).subscribe(response => {
+    if (
+      this.folderNameToCreate.length > 0 &&
+      !this.validateEspecialCharacters(this.folderNameToCreate)
+    ) {
+      const folderRequest: folderRequest = {
+        folderName: this.folderNameToCreate,
+      };
+      this.folderService.createFolders(folderRequest).subscribe((response) => {
         this.initializeFoldersTemplate();
       });
-    }else {
-      window.alert('Folder name cannot be empty or contain special characters!');
+    } else {
+      window.alert(
+        'Folder name cannot be empty or contain special characters!'
+      );
     }
 
     //create folder this.foldername
